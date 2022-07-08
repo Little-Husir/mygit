@@ -1,0 +1,82 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+//int是整型的意思
+//main前面的int表示main函数调用返回一个整型值
+//int main()//主函数-程序的入口，并且main函数有且仅有一个
+//{
+	//这里完成任务
+	//在屏幕上输出
+	//printf打印函数
+	//库函数-c语言本身提供给我们的函数
+	//使用库函数需要打招呼（头文件）如#include <stdio.h>既包含一个叫stdio.h
+	//return 0;//返回0
+//}
+//数据类型
+/*int main()
+{
+	//%d - 打印整型
+	//%c - 打印字符
+	//%f - 打印浮点型数字即小数
+	//%p - 以地址的形式打印
+	char ch = 'A';//char 字符类型，即申请内存来存放字符
+	printf("%c", ch);//%c 打印字符格式的数据
+	int age = 20;
+	printf("%d", age);//%d 打印整型十进制的数据
+	//short int 短整型
+	//long int 长整型
+	float f = 5.0;
+	double d = 3.14;
+	printf("%lf", d);//%lf 打印双精度的数据
+	//为什么出现这样的类型?
+	return 0;
+}*/
+/*int main()
+{
+	printf("%d\n", sizeof(char));
+	printf("%d\n", sizeof(short));
+	printf("%d\n", sizeof(int));
+	printf("%d\n", sizeof(long));
+	printf("%d\n", sizeof(long long));
+	printf("%d\n", sizeof(float));
+	printf("%d\n", sizeof(double));
+}
+
+
+int main()
+{
+	//年龄
+	//20
+	//定义变量
+	short age = 20;//向内存申请2个字节=16个比特位，用来存放20；
+	float weight = 95.6f;//向内存申请四个字节存放小数       95.6f  f表示存放的是单精度浮点型小数，否则会被编译系统认为双精度小数造成数据丢失
+
+	return 0;
+
+
+}}
+*/
+
+/*
+变量的分类
+局部变量
+全局变量
+ int num2 = 20;//全局变量
+int main ()
+{
+    int num = 10;//局部变量
+	return 0;
+ }
+ */
+int main()
+{
+	//计算两个数的和
+	int num1 = 0;//局部变量
+	int num2 = 0;
+	int sum = 0;
+	//输入数据使用scanf
+	scanf("%d%d", &num1,&num2);//取地址符号
+	//c语言规定，变量要定义在当前代码块的最前面
+	 sum = num1 + num2;
+	printf("sum=%d\n", sum);
+	return 0;
+}
