@@ -1,0 +1,94 @@
+#define _CRT_SECURE_NO_WARNINGS 1 //出现scanf等不安全的的错误时可以这样处理使其不报错，但必须是第一行
+#include <stdio.h>
+/*int main()
+{
+	int num1 = 0;
+	int num2 = 0;
+	int sum = 0;
+	scanf("%d%d", &num1, &num2);//警告或错误的提示scanf和scanf_s，scanf是c语言提供的，scanf_s不是标准c语言提供的是vs编译器提供的
+	//建议不要使用scanf_s，因为这样不具有跨平台性/可移植性，在其他编译器上识别不出来这个函数
+	sum = num1 + num2;
+	printf("sum=%d\n", sum);
+	return 0;
+}
+
+int main()
+{
+	const int n = 10;//n是变量，但是又有常属性，所以我们说n是常变量
+	int arr[10] = { 0 };//定义数组时，[]里必须为常量；
+	return 0;
+}
+int main()
+{
+	return 0;
+}
+
+#define MAX 10 //#define 定义的为标识符常量
+int main()
+{
+	int arr[MAX] = { 0 };
+	return 0;
+}
+
+//枚举常量
+//枚举即——列举
+//性别 ：男 女
+//三原色：红黄蓝等等
+
+//枚举关键字——enum
+
+enum Sex
+{
+	MALE,
+	FEMALE,
+	SECRET
+};
+//MALE,FEMALE,SECRET - 枚举常量
+int main()
+{
+	//enum Sex s = FEMALE;
+	printf("%d\n", MALE);//0即默认的为0,1,2
+	printf("%d\n", FEMALE);//1
+	printf("%d\n", SECRET);//2
+
+	return 0;
+}
+
+
+int main()
+{
+	//数据在计算机存储的时候，存储的是二进制
+	//#av$
+	//a-97
+	//A-65
+	//....
+	//ASCLL编码
+	//ASCLL 码值
+	char arr[] = "abc";//数组
+	//"abc"--有 'a','b','c','\0'四个字符--'\0'是字符串的结束标志'\0'的值为0
+	char arr0[] = {'a','b','c',0};
+	//而arr0中只有'a','b','c'三个字符，没有结束标志，所以会乱码，打出随机值，当加入0时结束打印，两者打印结果一致
+	printf("%s\n", arr);
+	printf("%s\n", arr0);
+	return 0;
+}
+
+int main()
+{
+	char arr[] = "abc";//数组
+	char arr0[] = { 'a','b','c' };
+	printf("%d\n", strlen(arr));//strlen计算字符串长度的函数 值为3
+	printf("%d\n", strlen(arr0));//值为15？因为arr0统计时统计到c后会继续统计，直到遇到'\0'后才会停止统计，这里遇到的随机值是15
+	return 0;
+}
+*/
+//转义字符
+int main()
+{
+	printf("abc\\n");
+	printf("%d\n", strlen("c:\test\32\test.c"));//长度为13，\t为一个字符\32也是一个转义字符
+	//\32是两个8进制数字
+	//32作为8进制代表的那个十进制数字，作为ASCLL码值对应的数字
+	//32-->10进制 26 --》作为ASCLL码值代表的数字
+	return 0;
+}
