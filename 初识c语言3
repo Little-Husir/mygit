@@ -1,0 +1,263 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+//int main()
+//{
+//	return 0;
+//}
+//int main()
+//{ 
+//	int input = 0;
+//	printf("加入比特\n");
+//	printf("你要好好学习吗？（1/0）：\n");
+//	scanf("%d", &input);
+//	if (input == 1)
+//		printf("好offer\n");
+//	else
+//		printf("卖红薯\n");
+//	return 0;
+//}
+
+//while 循环
+//int main()
+//{
+//	int line = 0;
+//	printf("加入比特\n");
+//	while (line < 20000)
+//	{
+//		printf("敲%d行代码\n",line);
+//		line++;
+//	}
+//	printf("好offer\n");
+//	return 0;
+//}
+
+//函数
+//int ADD(int a, int b)
+//{
+//	int c = a + b;
+//	return c;
+//}
+//int main()
+//{
+//	int num1 = 10;
+//	int num2 = 20;
+//	int sum = 0;
+//	sum = ADD(num1, num2);
+//	printf("sum=%d", sum);
+//	return 0;
+//}
+
+
+//数组
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };//定义一个存放10个整数数字的数组；
+//	printf("%d\n", arr[4]);//下标的方式访问元素
+//	int i = 0;
+//	while (i < 10)
+//	{
+//		printf("%d\n", arr[i]);
+//		i++;
+//	}
+//	return 0;
+//}
+
+//计算数组的元素个数
+//数组总大小/每个元素的大小
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int sz = 0;
+//	printf("%d\n", sizeof(arr));
+//	sz = sizeof(arr) / sizeof(arr[0]);
+//	printf("%d\n", sz);
+//	return 0;
+//}
+
+
+
+//使两个整数变量交换值，且不使用第三个变量
+////方法一；但这样会产生溢出，a和b没有溢出，但a+b会
+//int main()
+//{
+//	int a = 3;
+//	int b = 5;
+//	printf("交换前：a=%d,b=%d\n", a, b);
+//	a = a + b;
+//	b = a - b;
+//	a = a - b;
+//	printf("交换后：a=%d,b=%d\n", a, b);
+//	return 0;
+//}
+////方法二：不会产生溢出问题，利用异或的原理
+//int main()
+//{
+//	int a = 3;
+//	int b = 5;
+//	printf("交换前：a=%d,b=%d\n", a, b);
+//	a = a ^ b;
+//	b = a ^ b;
+//	a = a ^ b;
+//	printf("交换后：a=%d,b=%d\n", a, b);
+//	return 0;
+//}
+
+
+
+//给定一个非空整型数组，除了某个元素只出现一次外，其余每个元素均出现两次，找出那个只出现一次的元素
+//列如 int a[]={1,2,3,4,5,1,2,3,4}
+//方法一：虽然能找出来只出现一次的元素，但是如果循环次数太多，会很麻烦，可以在优化一下，如方法二
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,1,2,3,4 };
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 0; i < sz; i++)
+//	{
+//		int count = 0;
+//		int j = 0;
+//		for (j = 0; j < sz; j++)
+//		{
+//			if (arr[i] == arr[j])
+//			{
+//				count++;
+//			}
+//		}
+//		if (count == 1)
+//		{
+//			printf("单身狗：%d\n", arr[i]);
+//		}
+//	}
+//	return 0;
+//}
+//方法二
+//int main()
+//{
+//	//因为1^1^2^2^3^3^4^4^5=5
+//	int arr[] = { 1,2,3,4,5,1,2,3,4 };
+//	int i = 0;
+//	int ret = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 0; i < sz; i++)
+//	{
+//		ret = ret ^ arr[i];
+//	}
+//	printf("单身狗：%d\n", ret);
+//	return 0;
+//}
+
+
+//取反符号~按位取反
+//int main()
+//{
+//	int a = 0;
+//	int b = ~a;//b是有符号的整型
+//	//~按二进制位取反
+//	//00000000000000000000000000000000
+//	//11111111111111111111111111111111
+//	//源码，反码，补码
+//	//源码最高位是符号位，反码最高位不变，其他位取反，补码：在反码的基础上加一
+//	//负数在内存中存储的时候，存储的是二进制的补码
+//
+//	printf("%d\n", b);//使用的，打印的是这个数的源码
+//	return 0;
+//}
+
+
+
+//前后++，--
+//int main()
+//{
+//	int a = 10;
+//	int b = a++;//后置++，先使用在++即先把a的值赋给b之后，a在+1
+//	int b = ++a;//前置++，先加1在使用，即把a+1赋给b，然后a在加一，--也一样
+//	printf("a=%d,b=%d\n", a, b);
+//	return 0;
+//}
+
+
+
+
+
+//静态的局部变量：static
+//static 修饰局部变量，当static修饰局部变量时，局部变量的生命周期变长，出了作用域也能发挥效果
+//static修饰全局变量，改变了变量的作用域----让静态的全局变量只能在自己的源文件中使用，不能再其他源文件中使用，但是要使用全局变量时要用extern声明
+//static修饰函数，和修饰全局变量的效果一样，但准确的说是改变了函数的连接属性，即由外部连接属性-》内部连接属性
+//void test()
+//{
+//	static int a = 1;//a是一个静态的局部变量
+//	a++;
+//	printf("a=%d\n", a);
+//}
+//int main()
+//{
+//	int i = 0;
+//	while (i < 5);
+//	{
+//		test();
+//		i++;
+//	}
+//	return 0;
+//}
+
+
+
+//指针的用法
+//int main()
+//{
+//	int a = 10;//向内存申请四个字节
+//	int* p = &a;//取a的地址
+//	//有一种变量是用来存放地址的我们把它叫做指针变量；
+//	printf("%p\n", &a);//%p指取a的地址
+//	printf("%p\n", p);
+//	//*p;//解引用操作符，即对p进行解引用操作，找到它所指向的那个对象a,间接访问操作符，
+//解引用意思："*"的作用是引用指针指向的变量值，引用其实就是引用该变量的地址，“解”就是把该地址对应的东西解开，解出来，就像打开一个包裹一样，
+//那就是该变量的值了，所以称为“解引用”。也就是说，解引用是返回内存地址中对应的对象。
+//	*p = 20;//*p是解引用p了，即把20赋给a
+//	printf("a=%d\n", a);
+//
+//	return 0;
+//}
+//各种数据类型占用的大小
+//int main()
+//{
+//	printf("%d\n", sizeof(char*));//4
+//	printf("%d\n", sizeof(short*));//4
+//	printf("%d\n", sizeof(int*));//4
+//	printf("%d\n", sizeof(double*));//4
+//	return 0;
+//}
+
+
+
+//结构体-表达的是复杂对象，列如描述一个人，要有，身高-体重-年龄-身份证号等等；
+//结构体是我们自己创造出来的一种类型
+struct book
+{
+	//创建结构体类型
+	char name[20];//书名C语言程序设计
+	short price;//55
+};
+int main()
+{
+	//利用结构体类型创建一个该类型的变量
+	struct book b1 = { "C语言程序设计",55 };
+	//b1.name = "c++";数组不能直接赋值，可以用字符串拷贝函数
+	strcpy(b1.name, "c++");//字符串拷贝函数   库函数要使用头文件#include <string.h>
+	printf("%s\n", b1.name);
+	struct book* pb = &b1;
+	//利用pb打印书名和价格；
+	/*printf("%s\n", (*pb).name);
+	printf("%s\n", (*pb).price);*/
+	printf("%s\n", pb ->name);//pb是一个指针，指向b1中的name
+	printf("%d\n", pb->price);//与上面等价
+	//printf("书名：%s,价格:%d\n", b1.name,b1.price);
+	//b1.price = 15;
+	//printf("修改后的价格：%d\n", b1.price);
+	return 0;
+}
+//int main()
+//{
+//	return 0;
+//}
