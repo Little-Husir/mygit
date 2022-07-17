@@ -1,0 +1,491 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+#include <Windows.h>
+#include <stdlib.h>
+//循环与分支
+//if语句
+//int main()
+//{
+//	int age = 56;
+//	if (age < 18)
+//		printf("未成年\n");
+//	else if (age < 28 && age >= 18)
+//		printf("青年\n");
+//	else if (age >= 28 && age < 50)
+//		printf("壮年\n");
+//	else if (age >= 50 && age < 90)
+//		printf("老年\n");
+//	else
+//		printf("老不死\n");
+//	return 0;
+//}
+
+//悬空else  if else是成对出现的，else和离得最近未匹配的if匹配；
+//int main()
+//{
+//	int a = 0;
+//	int b = 2;
+//	if (a == 1)
+//		if (b = 2)
+//			printf("hehe\n");
+//	else
+//			printf("haha\n");
+//	return 0;
+//}
+
+//容易出错的地方;
+//int main()
+//{
+//	int num = 4;
+//	if (num = 5)
+//	{
+//		printf("hehe\n");//会执行语句，因为=是赋值语句不是==所以会执行，以后避免出错可以这样写5=num
+//	}
+//	return 0;
+//}
+
+
+//两个题，判断一个数是否为奇数；
+//输出1—100之间的奇数
+//int main()
+//{
+//	int a = 0;
+//	printf("请输入一个数：\n");
+//	scanf("%d", &a);
+//	if ((a % 2) == 1)
+//		printf("输入的数为奇数，\n");
+//	else
+//		printf("输入的数为偶数，\n");
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i < 100; i++)
+//	{
+//		if ((i % 2) == 1)
+//			printf("%d是奇数\n", i);
+//	}
+//	return 0;
+//}
+
+//switch多分支语句;
+//int main()
+//{
+//	int day = 0;
+//	scanf("%d", &day);
+//	switch (day)
+//	{
+//	case 1:
+//		printf("星期一\n");
+//		break;
+//	case 2:
+//		printf("星期二\n");
+//		break;
+//	case 3:
+//		printf("星期三\n");
+//		break;
+//	case 4:
+//		printf("星期四\n");
+//		break;
+//	case 5:
+//		printf("星期五\n");
+//		break;
+//	case 6:
+//		printf("星期六\n");
+//		break;
+//	case 7:
+//		printf("星期日\n");
+//		break;
+//
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int day = 0;
+//	scanf("%d", &day);
+//	switch (day)
+//	{
+//	case 1:
+//	case 2:
+//	case 3:
+//	case 4:
+//	case 5:
+//		printf("工作日\n");//case后面不一定非得要break，根据逻辑实现想要的，就这个例子来说，不管从1-5哪里进来，遇到break就会跳出;
+//		break;
+//	case 6:
+//	case 7:
+//		printf("休息日\n");
+//		break;
+//  default:
+//      printf("输入错误\n");
+//      break;
+//
+//	}
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int n = 1;
+//	int m = 2;
+//	switch (n)
+//	{
+//	case 1:n++;
+//	case 2:m++;
+//	case 3:
+//		switch (n)
+//		{
+//		case 1:n++;
+//		case 2:m++; n++; 
+//			break;
+//		}
+//	case 4:m++; 
+//		break;//没有遇到break就会一直按顺序执行；直到遇到break跳出循环；
+//	default:
+//		break;
+//	}
+//	printf("m=%d,n=%d", m, n);
+//	return 0;
+//}
+
+//循环语句
+//int main()
+//{
+//	int i = 1;
+//	while (i<=10)
+//	{
+//		if (i == 5)
+//			continue;//continue改变循序执行的状态，意思是遇到continue该循环跳出本次循环进入下一次循环，改代码块的执行结果为1234因为当i=5时结束当前循环开始下一次循环。但是下一次循环
+//		//值没发生改变，还是5，所以printf语句没有执行，没有打印结果；
+//		printf("%d", i);
+//		i++;
+//	}
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int ch = getchar();//getchar意思是从键盘接收一个字符，输入两个则只接受第一个
+//	putchar(ch);//putchar意思是输出“一个字符”
+//	printf("%c\n", ch);
+//	return 0;
+//}
+
+
+//代码1
+//int main()
+//{
+//	int ch = 0;
+//	////EOF = end of file 文件结束标志 
+//	//while ((ch = getchar()) != EOF)
+//	//	putchar(ch);
+//	/*
+//	getchar和scanf输入函数
+//
+//	输入函数中有一个输入缓冲区，下面代码输入123456并按回车后，缓冲区里面的东西有123456\n数据，scanf最开始读取了123456的数据，getchar读走了\n的数据
+//	所以ret的值是10
+//	*/
+//	int ret = 0;
+//	char password[20] = { 0 };
+//	printf("请输入密码：>");
+//	scanf("%s", password);//输入密码，并存放在password数组中,这里不用取地址符号，数组名是指向数组第一个元素的指针，所以如果你直接使用数组名的时候是不需要取地址符的。
+//	//如果你用了下标操作那就需要取地址符，比如：int num[10];直接使用num，那么不用取地址符。如果你用num[1]，通过scanf给其赋值，是需要取地址符的
+//	while ((ch = getchar()) != '\n')     //*******************scanf读取数据后，清空缓存区，方便下面getchar的再次读取
+//	{
+//		;                                  
+//	}
+//	printf("请确认（Y/N）：>");
+//	ret = getchar();//这里并没有读取到Y/N而是数字10因为从键盘输入后按回车确认，getchar就把回车读进去了，所以是10
+//	if (ret == 'Y')
+//	{
+//		printf("确认成功");
+//	}
+//	else
+//	{
+//		printf("确认失败");
+//	}
+//	return 0;
+//}
+
+
+//代码2
+//int main()
+//{
+//	int ch = 0;
+//	while ((ch=getchar())!=EOF)//ctrl+z表示EOF，这个代码的意思是只打印0-9中的数字，例如25e6打印出来就是256
+//	{
+//		if (ch < '0' || ch>'9')
+//			continue;
+//		putchar(ch);
+//	}
+//	return 0;
+//}
+
+
+//********************************************for循环
+//一些for循环的变种
+//int main()
+//{
+	////变种1
+	//for (;;)//死循环
+	//	/*
+	//	1.for循环的初始化，调整，判断，都可以省略
+	//	但是for循环的判断部分被省略，那判断条件恒为真
+	//	2.如果不是非常熟练，建议大家不要随便省略判断条件
+	//	
+	//	*/
+	//{
+	//	printf("hehe\n");
+	//}
+	////省略的代码块示范
+	//int i = 0;
+	//int j = 0;
+	//for (i=0; i < 10; i++)
+	//{
+	//	for (j=0; j < 10; j++)
+	//	{
+	//		printf("hehe\n");
+	//	}
+	//}//正常写法打印100次hehe
+	//
+	//int i = 0;
+	//int j = 0;
+	//for (; i < 10; i++)
+	//{
+	//	for (; j < 10; j++)
+	//	{
+	//		printf("hehe\n");
+	//	}
+	//}//省略写法打印10次hehe，因为i进行第二次循环时，j没有初始化，值是10，j的判断条件不成立，所以不执行打印语句；
+
+
+	//
+	////变种2
+	//int x, y;
+	//for (x = 0, y = 0; x < 2 && y < 5; ++x, y++)
+	//{
+	//	printf("hehe\n");
+	//}
+	
+
+	//一道笔试题
+	//int i = 0;
+	//int k = 0;
+	//for (i = 0, k = 0; k = 0; i++, k++)//k=0.0为假，即条件不成立
+	//{
+	//	printf("1\n");
+	//	k++;
+	//}
+ //   return 0;
+//}
+
+
+//**********************************do..whlie循环
+//练习题
+//1.计算n的阶乘
+//int main()
+//{
+//	int i = 0;
+//	int n = 0;
+//	int s = 1;
+//	printf("请输入整数n：");
+//	scanf("%d", &n);
+//	for (i = 1; i <= n; i++)
+//	{
+//		s = s * i;
+//	}
+//	printf("%d\n", s);
+//	return 0;
+//}
+
+//2.计算1！+2!+3!+....+10!
+//int main()
+//{
+//	int i = 1;
+//	int j = 0;
+//	int n = 0;
+//	int s = 1;
+//	int sum = 0;
+//	printf("请输入整数n：");
+//	scanf("%d", &n);
+//	for (i = 1; i <= n; i++)
+//	{
+//		for (j = i-1; j <= i-1; j++)
+//		{
+//			s = s * i;
+//		}
+//		sum = s + sum;
+//	}
+//	printf("%d\n", sum);
+//	return 0;
+//}
+//
+
+
+//规范写法,但是增加工作负担
+//int main()
+//{
+//	int i = 0;
+//	int n = 0;
+//	int ret = 1;
+//	int sum = 0;
+//	for (n = 1; n <= 3; n++)
+//	{
+//		ret = 1;
+//		for (i = 1; i <= n; i++)
+//		{
+//			ret = ret * i;
+//		}
+//		sum = ret + sum;
+//	}
+//	printf("%d\n", sum);
+//	return 0;
+//}
+
+//改进版
+//int main()
+//{
+//	int i = 0;
+//	int n = 0;
+//	int ret = 1;
+//	int sum = 0;
+//	for (n = 1; n <= 3; n++)
+//	{
+//		ret = ret * n;
+//		sum = ret + sum;
+//	}
+//	printf("%d\n", sum);
+//	return 0;
+//}
+
+//3.在一个有序数组中查找具体的某个数字n，编写 int binsearch(int x, int v[], int n);功能：在v[0]<=v[1]<=v[2]<=......<=v[n-1]的数组中查找x；
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int k = 7;
+//	//写一个代码，在arr[]有序数组中找到数字7；
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 0; i <= sz; i++)
+//	{
+//		if (k == arr[i])
+//		{
+//			printf("找到了，下标是%d\n", i);
+//			break;
+//		}
+//	}
+//	if (i == sz)
+//		printf("找不到\n");
+//	return 0;
+//}
+
+//折半查找算法，二分查找算法
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int k = 7;
+//	int left = 0;//左下标
+//	int right = sz - 1;//右下标
+//
+//	while (left<=right)
+//	{
+//		int mid = (left + right) / 2;
+//		if (arr[mid] > k)
+//		{
+//			right = mid - 1;
+//		}
+//		else if (arr[mid] < k)
+//		{
+//			left = mid + 1;
+//		}
+//		else
+//		{
+//			printf("找到了，下标是%d\n", mid);
+//			break;
+//		}
+//	}
+//	if (left > right)
+//		printf("找不到\n");
+//	return 0;
+//}
+
+
+//4.编写代码，演示多个字符从两端移动，向中间汇聚
+//int main()
+//{
+//	//welcome to bit!!!!!
+//	//####################
+//	//w##################!
+//	//we################!!
+//	//......
+//	//welcome to bit!!!!!!
+//	char arr1[] = "welcome to bit!!!!!!";
+//	char arr2[] = "####################";
+//	int left = 0;
+//	//int right = sizeof(arr1) / sizeof(arr1[0]) - 2;
+//	int right = strlen(arr1) - 1;//与上面等价
+//
+//	while (left<=right)
+//	{
+//		arr2[left] = arr1[left];
+//		arr2[right] = arr1[right];
+//		printf("%s\n", arr2);
+//		//休息一秒
+//		Sleep(1000);//使用时要引用头文件 <windows.h>
+//		system("cls");//执行系统命令的一个函数,cls清空屏幕//使用时要引用头文件 <stdlib.h>
+//		left++;
+//		right--;
+//	}
+//	printf("%s\n", arr2);
+//	return 0;
+//}
+
+
+//5.编写代码，模拟用户登录情景，并且只能登录三次；
+//int main()
+//{
+//	int i = 0;
+//	char password[20] = { 0 };
+//	for (i = 0; i < 3; i++)
+//	{
+//		printf("请输入密码：");
+//		scanf("%s", password);
+//		if (strcmp(password ,"123456")==0)//==不能用来比较两个字符串是否相等，应该使用一个库函数 strcmp函数
+//		{
+//			printf("登录成功\n");
+//			break;
+//		}
+//	}
+//	if (i == 3)
+//	{
+//		printf("三次密码均输入错误");
+//	}
+//	return 0;
+//}
+
+
+
+
+//*****************************************************作业
+//int main()
+//{
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	return 0;
+//}
